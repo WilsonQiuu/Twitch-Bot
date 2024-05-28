@@ -1,9 +1,13 @@
 from twitchio.ext import commands
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 class Bot(commands.Bot):
 
     def __init__(self):
-        super().__init__(token='oauth:bw968c11xhk2cfbzg4j1by2r9g9q23', prefix='!', initial_channels=['hJune'])
+        super().__init__(token=os.getenv('TOKEN'), prefix='!', initial_channels=['hJune'])
 
     async def event_ready(self):
         print(f'Logged in as | {self.nick}')

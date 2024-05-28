@@ -1,4 +1,5 @@
 from pynput import mouse, keyboard
+from dotenv import load_dotenv
 
 def get_coords(x, y):
     print('Mouse coords: {0}, {1}'.format(x, y))
