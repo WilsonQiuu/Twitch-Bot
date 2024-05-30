@@ -74,7 +74,7 @@ try:
                     file.write(new_text + '\n')
                 print(new_text)  # Print or save the new text
             previous_text = text
-        time.sleep(1)  # Capture every second
+        time.sleep(30)  # Capture every second
 except KeyboardInterrupt:
     # Stop capturing on keyboard interrupt
     pass
