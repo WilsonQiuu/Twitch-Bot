@@ -11,6 +11,72 @@ chat_input_coords = ((1483, 1016), (1700, 1028))
 # Define a flag to stop the script
 stop_script = False
 
+
+initialMessages = [
+    "Hey",
+    "Hi",
+    "Yo",
+    "Wassup",
+    "What's up",
+    "Eyyo",
+    "Hey there",
+    "Hi guys",
+    "Howdy",
+    "Wassup chat",
+    "Hey folks",
+    "Greetings",
+    "What's good?",
+    "Hey y'all!"
+]
+
+secondaryMessages = [
+    "How's everyone doing today?",
+    "What are you guys up to?",
+    "How's the stream going?",
+    "Anyone got any plans for the weekend?",
+    "What did I miss so far?",
+    "How's it going?",
+    "Any good games lately?",
+    "What's everyone playing?",
+    "How's the vibe today?",
+    "What's new with you all?",
+    "Any recommendations for games?",
+    "What are we watching?",
+    "How's your day going?",
+    "What’s everyone chatting about?",
+    "What’s the highlight of the stream so far?",
+    "What’s been happening?",
+    "Any cool moments in the stream?",
+    "How’s the streamer doing?",
+    "What are we discussing?",
+    "Any fun stuff going on?"
+]
+
+thirdMessages = [
+    ["I'm doing great, just chilling!", "Not bad, how about you?", "Pretty good, thanks for asking!"],
+    ["Just hanging out, you?", "Not much, what about you?", "Watching some streams, you?"],
+    ["It's awesome, loving the content!", "Great, the streamer is on fire!", "Really enjoying it!"],
+    ["Just relaxing, maybe some gaming.", "Not sure yet, what about you?", "Thinking of some outdoor activities."],
+    ["Just got here too, let's find out!", "Not sure, just tuned in.", "Catching up from the start!"],
+    ["Pretty good, you?", "All good here, thanks!", "Going well, how's yours?"],
+    ["Playing a bit of everything, you?", "Loving some RPGs lately, you?", "Mostly shooters, what about you?"],
+    ["Just started a new RPG, you?", "Mixing it up, what about you?", "Playing some classics, you?"],
+    ["Vibe is great, loving the energy.", "Pretty chill, how's yours?", "Really good, enjoying the chat."],
+    ["Not much, how about you?", "Just the usual, you?", "Catching up on streams, you?"],
+    ["Depends on what you like, any genre?", "Try the new releases, they are fun!", "Some indie games are great!"],
+    ["Catching up on the latest content.", "A mix of everything, you?", "Some gameplay and chat, you?"],
+    ["Good, just relaxing.", "Not bad, thanks!", "Pretty well, you?"],
+    ["Just chatting about games mostly.", "Some random topics, you?", "Games and more, you?"],
+    ["The gameplay is awesome!", "Some great moments here!", "Really enjoying the highlights!"],
+    ["Just the usual, you?", "Not much, just chilling.", "Same old, what about you?"],
+    ["Some epic gameplay moments!", "A few great clips!", "Loving the stream highlights!"],
+    ["Streamer's doing great, very interactive!", "Really enjoying the streamer!", "Streamer's energy is awesome!"],
+    ["Games, mostly. You?", "A bit of everything, you?", "Some random topics, you?"],
+    ["Some fun discussions!", "A lot of interesting chats.", "Great conversations happening!"]
+]
+
+
+
 def on_press(key):
     global stop_script
     try:
