@@ -3,6 +3,9 @@ import pyautogui
 from PIL import Image, ImageEnhance, ImageFilter
 import time
 import hashlib
+from collections import deque
+
+
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
@@ -42,6 +45,10 @@ def longest_common_substring(s1, s2):
                 m[x][y] = 0
     return s1[x_longest - longest: x_longest]
 
+# function that takes in two time.time() values and returns the difference in minutes
+
+
+
 def extract_new_text(prev_text, new_text):
     common_substring = longest_common_substring(prev_text, new_text)
     if common_substring:
@@ -54,12 +61,13 @@ def hash_text(text):
 # Updated region where captions appear (x, y, width, height)
 caption_region = (390, 305, 759, 295)
 
-captured_text = []
 seen_hashes = set()
 output_file = 'captions.txt'
 previous_text = ""
+queue = deque(maxlen=100) # Max of 100 items in the queue
 
 try:
+    # Inside the try block
     while True:
         screenshot = capture_screenshot(caption_region)
         text = extract_text_from_image(screenshot)
@@ -69,16 +77,24 @@ try:
             new_text = extract_new_text(previous_text, text)
             if new_text:
                 seen_hashes.add(text_hash)
-                captured_text.append(new_text)
-                with open(output_file, 'a', encoding='utf-8') as file:
-                    file.write(new_text + '\n')
-                print(new_text)  # Print or save the new text
+                current_time = time.time()
+                queue.append((new_text, current_time))
+                
+                # Remove old entries from the queue
+                while queue and current_time - queue[0][1] > 5 * 60:
+                    queue.popleft()
+
+                # Write queue contents to the output file
+                with open(output_file, 'w', encoding='utf-8') as file:
+                    file.write(' '.join([entry[0] for entry in queue]))
+
+                # Print only the new text added to the queue
+                print("New text captured:", new_text)
+                
             previous_text = text
-        time.sleep(30)  # Capture every second
+        time.sleep(10)  # Capture every 20 seconds
+
 except KeyboardInterrupt:
     # Stop capturing on keyboard interrupt
     pass
 
-# Combine all captured text at the end (optional)
-with open(output_file, 'a', encoding='utf-8') as file:
-    file.write('\n'.join(captured_text))
